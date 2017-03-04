@@ -40,20 +40,20 @@ function blanks(inWord) {
 
 function isALetter(inCurrent, inUserGuess, inArr)
 {
-    inArr=[];
+
     for (i = 0; i < inCurrent.length; i++)
     {
-         if (inCurrent.charAt(i) == inUserGuess)
-         {
+        if (inCurrent.charAt(i) == inUserGuess)
+        {
 
             inArr[i] = inUserGuess;
             console.log(inArr[i]);
 
-         }
+        }
 
 
     }
-
+    return inArr;
 }
 //********************************************************
 
@@ -73,21 +73,21 @@ document.onkeyup = function (event) {
     console.log(currentBlanks);
     guessesLeft = 8;
 
-    userGuess = String.fromCharCode(event.keyCode);
+    userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-    isALetter(currentWord, userGuess, currentBlanks);
+    currentBlanks= isALetter(currentWord, userGuess, currentBlanks);
     //for(i=0;i<8;i++) {
     //    if ((typeof(userGuess) === "string")&& (boolLetter===true) ){
-            console.log(guessesLeft);
-            userGuess = String.fromCharCode(event.keyCode);
-            console.log(userGuess);
+    console.log(guessesLeft);
+    userGuess = String.fromCharCode(event.keyCode);
+    console.log(userGuess);
 
-            console.log(currentBlanks);
+    console.log(currentBlanks);
 
-            guessesLeft--;
+    guessesLeft--;
 
 
-     //   }else  guessesLeft--;
+    //   }else  guessesLeft--;
 
 
 }
