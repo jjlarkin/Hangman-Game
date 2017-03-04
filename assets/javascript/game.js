@@ -39,6 +39,7 @@ function blanks(inWord) {
     for (i = 0; i < inWord.length; i++) {
 
         blnkArr.push("_");
+
     }
 
     return blnkArr;
@@ -52,11 +53,11 @@ function isALetter(inCurrent, inUserGuess, inArr, letterTrue)
         if (inCurrent.charAt(i) === inUserGuess)
         {
             inArr[i] = inUserGuess;
-
+            console.log(inArr)
         }
 
 
-    }
+    }return inArr;
 
 }
 //********************************************************
@@ -64,14 +65,14 @@ function isALetter(inCurrent, inUserGuess, inArr, letterTrue)
 
 // Start up the game by pressing any key
 
-var wins, losses, guessesLeft, currentWord, currentBlanks, boolLetter;
+var wins, losses, guessesLeft, currentWord, currentBlanks, boolLetter, userGuess;
 
 
 //
 console.log("Press any letter to start");
 document.onkeyup = function (event) {
     currentWord = chooseWord(currentWord);
-    var userGuess = String.fromCharCode(event.keyCode);
+    userGuess = String.fromCharCode(event.keyCode);
 
     guessesLeft = 8;
 
@@ -83,13 +84,13 @@ document.onkeyup = function (event) {
     console.log(guessesLeft);
 
 
-    currentBlanks  = isALetter(currentWord, userGuess, currentBlanks, boolLetter);
+    isALetter(currentWord, userGuess, currentBlanks, boolLetter);
     console.log(currentBlanks);
 
     guessesLeft--;
+    console.log(guessesLeft);
 
-
-}
+};
 
 
 
