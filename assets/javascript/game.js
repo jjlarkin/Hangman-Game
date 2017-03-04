@@ -45,48 +45,49 @@ function blanks(inWord) {
 };
 
 function isALetter(inCurrent, inUserGuess, inArr, letterTrue) {
-    var inArr;
+    inArr=[];
     for (i = 0; i < inCurrent.length; i++) {
         if (inCurrent.charAt(i) === inUserGuess) {
-            inArr[i]=inUserGuess
-        }
-    }
-    console.log(inArr);
-};
+            inArr[i] = inUserGuess;
+            return letterTrue = true;
+        } else return letterTrue = false;
 
+
+    }
+
+};
 //********************************************************
 
 
 // Start up the game by pressing any key
 
-var wins, losses, guessesLeft, currentWord, currentBlanks;
+var wins, losses, guessesLeft, currentWord, currentBlanks, boolLetter;
 
 
 //
 console.log("Press any letter to start")
-document.onkeyup = function(event) {
+document.onkeyup = function (event) {
 
     var userGuess = String.fromCharCode(event.keyCode);
+
+    guessesLeft = 8;
+
     currentWord = chooseWord(currentWord);
-    currentBlanks=blanks(currentWord);
-
-
-    guessesLeft=0;
-    console.log(guessesLeft)
-    userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+    currentBlanks = blanks(currentWord);
 
 
 
-
-    isALetter(currentWord, userGuess, currentBlanks);
-
-    console.log(userGuess);
+    console.log(guessesLeft);
 
 
+    isALetter(currentWord, userGuess, currentBlanks, boolLetter);
+    console.log(currentBlanks);
+
+    guessesLeft--;
 
 
+}
 
-};
 
 
 
