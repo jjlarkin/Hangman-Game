@@ -29,7 +29,7 @@
 function chooseWord(randoWord) {
     var wordList = ["red", "party", "supply", "cheese", "quadrant", "another", "word"];
     randoWord = wordList[Math.floor(Math.random() * wordList.length)];
-    console.log(randoWord)
+    console.log(randoWord);
     return randoWord;
 
 }
@@ -47,17 +47,18 @@ function blanks(inWord) {
 
 function isALetter(inCurrent, inUserGuess, inArr, letterTrue)
 {
-    inArr=[];
+
     for (i = 0; i < inCurrent.length; i++)
     {
         if (inCurrent.charAt(i) === inUserGuess)
         {
-            inArr[i] = inUserGuess;
-            console.log(inArr)
+            inArr[i] = inUserGuess+"";
+            console.log(inArr[i]);
+            return letterTrue =true;
         }
 
 
-    }return inArr;
+    }
 
 }
 //********************************************************
@@ -65,31 +66,35 @@ function isALetter(inCurrent, inUserGuess, inArr, letterTrue)
 
 // Start up the game by pressing any key
 
-var wins, losses, guessesLeft, currentWord, currentBlanks, boolLetter, userGuess;
+var wins, losses, guessesLeft, currentWord, currentBlanks,  userGuess;
+var boolLetter = false;
 
 
 //
 console.log("Press any letter to start");
 document.onkeyup = function (event) {
-    currentWord = chooseWord(currentWord);
-    userGuess = String.fromCharCode(event.keyCode);
 
+    currentWord = chooseWord(currentWord);
+    currentBlanks = blanks(currentWord);
+    console.log(currentBlanks);
     guessesLeft = 8;
 
 
-    currentBlanks = blanks(currentWord);
 
+    boolLetter= isALetter(currentWord, userGuess, currentBlanks, boolLetter);
+    for(i=0;i<8;i++) {
+        if (typeof(userGuess) === "string") {
+            console.log(guessesLeft);
+            userGuess = String.fromCharCode(event.keyCode);
+            console.log(userGuess);
 
+            console.log(currentBlanks);
 
-    console.log(guessesLeft);
+            guessesLeft--;
+            console.log(guessesLeft);
 
-
-    isALetter(currentWord, userGuess, currentBlanks, boolLetter);
-    console.log(currentBlanks);
-
-    guessesLeft--;
-    console.log(guessesLeft);
-
+        }
+    }
 };
 
 
