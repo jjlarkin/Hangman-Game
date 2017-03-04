@@ -32,30 +32,33 @@ function chooseWord(randoWord) {
     console.log(randoWord)
     return randoWord;
 
-};
+}
 //count characters and write blanks from wordList[]
 function blanks(inWord) {
     var blnkArr=[];
     for (i = 0; i < inWord.length; i++) {
 
         blnkArr.push("_");
-    };
-    console.log(blnkArr)
-    return blnkArr;
-};
+    }
 
-function isALetter(inCurrent, inUserGuess, inArr, letterTrue) {
+    return blnkArr;
+}
+
+function isALetter(inCurrent, inUserGuess, inArr, letterTrue)
+{
     inArr=[];
-    for (i = 0; i < inCurrent.length; i++) {
-        if (inCurrent.charAt(i) === inUserGuess) {
+    for (i = 0; i < inCurrent.length; i++)
+    {
+        if (inCurrent.charAt(i) === inUserGuess)
+        {
             inArr[i] = inUserGuess;
-            return letterTrue = true;
-        } else return letterTrue = false;
+
+        }
 
 
     }
 
-};
+}
 //********************************************************
 
 
@@ -65,14 +68,14 @@ var wins, losses, guessesLeft, currentWord, currentBlanks, boolLetter;
 
 
 //
-console.log("Press any letter to start")
+console.log("Press any letter to start");
 document.onkeyup = function (event) {
-
+    currentWord = chooseWord(currentWord);
     var userGuess = String.fromCharCode(event.keyCode);
 
     guessesLeft = 8;
 
-    currentWord = chooseWord(currentWord);
+
     currentBlanks = blanks(currentWord);
 
 
@@ -80,7 +83,7 @@ document.onkeyup = function (event) {
     console.log(guessesLeft);
 
 
-    isALetter(currentWord, userGuess, currentBlanks, boolLetter);
+    currentBlanks  = isALetter(currentWord, userGuess, currentBlanks, boolLetter);
     console.log(currentBlanks);
 
     guessesLeft--;
