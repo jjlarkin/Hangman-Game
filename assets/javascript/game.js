@@ -28,9 +28,10 @@ function chooseWord(randoWord) {
 //count characters and write blanks from wordList[]
 function blanks(inWord) {
     var blnkArr=[];
-    for (i = 0; i < inWord.length; i++) {
+    for (i = 0; i < inWord.length; i++)
+    {
 
-        blnkArr.push("_");
+        blnkArr.push("-");
 
     }
 
@@ -42,13 +43,13 @@ function isALetter(inCurrent, inUserGuess, inArr)
     inArr=[];
     for (i = 0; i < inCurrent.length; i++)
     {
-        // if (inCurrent.charAt(i) === inUserGuess)
-        // {
+         if (inCurrent.charAt(i) == inUserGuess)
+         {
 
             inArr[i] = inUserGuess;
             console.log(inArr[i]);
 
-        // }
+         }
 
 
     }
