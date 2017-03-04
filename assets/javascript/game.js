@@ -1,25 +1,17 @@
 /**************************************
  Attempt at Hangman
-
  James Larkin
-
  ***************************************/
 
 /* Psuedocode
  1.1. Pick a random word.
  --On key randomly pick from Array of words
-
  1.2. Display amount of letters in the word via dashes
  use index to creat the desired number of dashes
-
  2.1. Tell player to pick a letter/
-
  2.2 Determine if the chosen letter is in the word
-
  2.3 Place the letter in the correct place if correct/subtract from total tries if wrong
-
  3. Display scoreboard
-
  4. Tell player they won/lost and reset the game
  */
 
@@ -45,17 +37,18 @@ function blanks(inWord) {
     return blnkArr;
 }
 
-function isALetter(inCurrent, inUserGuess, inArr, letterTrue)
+function isALetter(inCurrent, inUserGuess, inArr)
 {
-
+    inArr=[];
     for (i = 0; i < inCurrent.length; i++)
     {
-        if (inCurrent.charAt(i) === inUserGuess)
-        {
-            inArr[i] = inUserGuess+"";
+        // if (inCurrent.charAt(i) === inUserGuess)
+        // {
+
+            inArr[i] = inUserGuess;
             console.log(inArr[i]);
-            return letterTrue =true;
-        }
+
+        // }
 
 
     }
@@ -67,7 +60,7 @@ function isALetter(inCurrent, inUserGuess, inArr, letterTrue)
 // Start up the game by pressing any key
 
 var wins, losses, guessesLeft, currentWord, currentBlanks,  userGuess;
-var boolLetter = false;
+var boolLetter = true;
 
 
 //
@@ -79,11 +72,11 @@ document.onkeyup = function (event) {
     console.log(currentBlanks);
     guessesLeft = 8;
 
+    userGuess = String.fromCharCode(event.keyCode);
 
-
-    boolLetter= isALetter(currentWord, userGuess, currentBlanks, boolLetter);
-    for(i=0;i<8;i++) {
-        if (typeof(userGuess) === "string") {
+    isALetter(currentWord, userGuess, currentBlanks);
+    //for(i=0;i<8;i++) {
+    //    if ((typeof(userGuess) === "string")&& (boolLetter===true) ){
             console.log(guessesLeft);
             userGuess = String.fromCharCode(event.keyCode);
             console.log(userGuess);
@@ -91,12 +84,12 @@ document.onkeyup = function (event) {
             console.log(currentBlanks);
 
             guessesLeft--;
-            console.log(guessesLeft);
 
-        }
-    }
-};
 
+     //   }else  guessesLeft--;
+
+
+}
 
 
 
